@@ -1,21 +1,22 @@
 #include <iostream>
-#include <vector>
-#include <algorithm>
+#include <set>
 using namespace std;
 
 int main() {
     int n, m;
     cin >> n >> m;
-    vector<string> v(n);
-    for(int i=0; i<n; i++) cin >> v[i];
 
-    sort(v.begin(), v.end());
-    
+    set<string> s;
+    string str;
+    for(int i=0; i<n; i++) {
+        cin >> str;
+        s.insert(str);
+    }
+
     int count=0;
     for(int i=0; i<m; i++) {
-        string s;
-        cin >> s;
-        if(binary_search(v.begin(), v.end(), s)) count++;
+        cin >> str;
+        if(s.find(str) != s.end()) count++;
     }
 
     cout << count;
